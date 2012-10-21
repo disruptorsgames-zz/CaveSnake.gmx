@@ -15,6 +15,6 @@
   <TextureGroup>0</TextureGroup>
   <For3D>0</For3D>
   <frames>
-    <frame index="0">images\s_fountain_0.png</frame>
+    <frame index="0">images\s_block_0.png</frame>
   </frames>
 </sprite>

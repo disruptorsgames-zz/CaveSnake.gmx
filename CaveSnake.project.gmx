@@ -6,19 +6,29 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\s_tail</sprite>
-    <sprite>sprites\s_snake</sprite>
-    <sprite>sprites\s_box</sprite>
-    <sprite>sprites\s_shelf</sprite>
-    <sprite>sprites\s_wall</sprite>
-    <sprite>sprites\s_banana</sprite>
-    <sprite>sprites\s_water</sprite>
+    <sprites name="Snake">
+      <sprite>sprites\s_tail</sprite>
+      <sprite>sprites\s_snake</sprite>
+      <sprite>sprites\s_gib</sprite>
+    </sprites>
+    <sprites name="World">
+      <sprite>sprites\s_wall</sprite>
+      <sprite>sprites\s_box</sprite>
+      <sprite>sprites\s_block</sprite>
+      <sprite>sprites\s_ramp</sprite>
+    </sprites>
+    <sprites name="Other">
+      <sprite>sprites\s_banana</sprite>
+      <sprite>sprites\s_splotch</sprite>
+      <sprite>sprites\s_checkpoint</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\reset.gml</script>
     <script>scripts\explode.gml</script>
+    <script>scripts\outside_view.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_hud</font>
@@ -26,14 +36,22 @@
   </fonts>
   <objects name="objects">
     <object>objects\o_debug</object>
-    <object>objects\o_snake</object>
-    <object>objects\o_tail</object>
-    <object>objects\o_box</object>
-    <object>objects\o_shelf</object>
-    <object>objects\o_wall</object>
-    <object>objects\o_banana</object>
-    <object>objects\o_water</object>
-    <object>objects\o_fountain</object>
+    <objects name="Snake">
+      <object>objects\o_snake</object>
+      <object>objects\o_tail</object>
+      <object>objects\o_gib</object>
+    </objects>
+    <objects name="World">
+      <object>objects\o_wall</object>
+      <object>objects\o_box</object>
+      <object>objects\o_block</object>
+      <object>objects\o_ramp</object>
+    </objects>
+    <objects name="Other">
+      <object>objects\o_banana</object>
+      <object>objects\o_splotch</object>
+      <object>objects\o_checkpoint</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_windows</room>
