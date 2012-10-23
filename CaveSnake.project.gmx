@@ -17,13 +17,16 @@
     </sprites>
     <sprites name="World">
       <sprite>sprites\s_wall</sprite>
+      <sprite>sprites\s_platform</sprite>
       <sprite>sprites\s_box</sprite>
       <sprite>sprites\s_block</sprite>
-      <sprite>sprites\s_ramp</sprite>
+      <sprite>sprites\s_ramp_r</sprite>
+      <sprite>sprites\s_ramp_l</sprite>
+      <sprite>sprites\s_checkpoint</sprite>
+      <sprite>sprites\s_finish</sprite>
     </sprites>
     <sprites name="Other">
       <sprite>sprites\s_splotch</sprite>
-      <sprite>sprites\s_checkpoint</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\s_rock</sprite>
@@ -55,17 +58,21 @@
     </objects>
     <objects name="World">
       <object>objects\o_wall</object>
+      <object>objects\o_platform</object>
       <object>objects\o_box</object>
       <object>objects\o_block</object>
-      <object>objects\o_ramp</object>
+      <object>objects\o_ramp_r</object>
+      <object>objects\o_ramp_l</object>
+      <object>objects\o_checkpoint</object>
+      <object>objects\o_finish</object>
     </objects>
     <objects name="Other">
       <object>objects\o_splotch</object>
-      <object>objects\o_checkpoint</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_windows</room>
+    <room>rooms\r_win</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

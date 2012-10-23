@@ -64,6 +64,29 @@ instance_create(x, y, o_tail);
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="o_finish">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(15)) + 6);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="o_checkpoint">
       <action>
         <libid>1</libid>
@@ -88,72 +111,6 @@ o_debug.starty = phy_position_y;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_ramp">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Null</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="o_block">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Null</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="o_box">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Null</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="o_wall">
       <action>
         <libid>1</libid>
@@ -171,10 +128,10 @@ o_debug.starty = phy_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(3)) + 3);
-
-if (lives &gt; 0)
+            <string>if (lives &gt; 0)
     lives -= 1;
+
+explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(3)) + 3);
 </string>
           </argument>
         </arguments>

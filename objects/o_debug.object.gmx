@@ -32,6 +32,29 @@ starty = o_snake.phy_position_y;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto_next();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -51,6 +74,7 @@ starty = o_snake.phy_position_y;
             <kind>1</kind>
             <string>if(lives = 0)
 {
+    // wait for enter, then retry
     if(keyboard_check_pressed(vk_enter))
         instance_create(startx, starty, o_snake);
 }
@@ -76,22 +100,26 @@ starty = o_snake.phy_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(f_hud);
+            <string>// draw the score and lives
+draw_set_font(f_hud);
 draw_set_halign(false);
 draw_roundrect(16, 16, 128, 55, 0);
 draw_text_color(22, 16, "Score:" + string(score), c_green, c_lime, c_green, c_lime, 1);
 draw_text_color(22, 32, "Lives:" + string(lives), c_maroon, c_red, c_maroon, c_red, 1);
 
+// game over
 if (lives = 0)
 {
     draw_set_font(f_big);
     draw_set_halign(true);
     
+    // get center (offset a little for font)
     centerX = view_wview[0] / 2;
     centerY = (view_hview[0] - 100) / 2;
     
     draw_text_color(centerX, centerY, "Game Over!", c_red, c_maroon, c_red, c_maroon, 1);
     
+    // instructions to restart
     draw_set_font(f_hud);
     draw_text(centerX, centerY + 64, "(press enter to respawn)");
 }
