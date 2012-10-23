@@ -10,4 +10,4 @@ draw_text_color(centerX, centerY, argument0, argument1, argument2, argument3, ar
 
 // instructions to restart
 draw_set_font(f_hud);
-draw_text_color(centerX, centerY + 64, "(press enter to restart)", c_white, c_white, c_white, c_white, 1);
+draw_text_color(centerX, centerY + 64, "(press enter to respawn)", c_white, c_white, c_white, c_white, 1);
