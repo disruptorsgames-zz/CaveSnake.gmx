@@ -79,8 +79,8 @@ starty = o_snake.phy_position_y;
             <string>draw_set_font(f_hud);
 draw_set_halign(false);
 draw_roundrect(16, 16, 128, 55, 0);
-draw_text_color(16, 16, "Bananas:" + string(score), c_green, c_lime, c_green, c_lime, 1);
-draw_text_color(16, 32, "Lives:" + string(lives), c_maroon, c_red, c_maroon, c_red, 1);
+draw_text_color(22, 16, "Score:" + string(score), c_green, c_lime, c_green, c_lime, 1);
+draw_text_color(22, 32, "Lives:" + string(lives), c_maroon, c_red, c_maroon, c_red, 1);
 
 if (lives = 0)
 {
@@ -88,7 +88,7 @@ if (lives = 0)
     draw_set_halign(true);
     
     centerX = view_wview[0] / 2;
-    centerY = view_hview[0] / 2;
+    centerY = (view_hview[0] - 100) / 2;
     
     draw_text_color(centerX, centerY, "Game Over!", c_red, c_maroon, c_red, c_maroon, 1);
     

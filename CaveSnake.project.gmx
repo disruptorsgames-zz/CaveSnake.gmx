@@ -6,6 +6,10 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="Fruit">
+      <sprite>sprites\s_apple</sprite>
+      <sprite>sprites\s_banana</sprite>
+    </sprites>
     <sprites name="Snake">
       <sprite>sprites\s_tail</sprite>
       <sprite>sprites\s_snake</sprite>
@@ -18,12 +22,16 @@
       <sprite>sprites\s_ramp</sprite>
     </sprites>
     <sprites name="Other">
-      <sprite>sprites\s_banana</sprite>
       <sprite>sprites\s_splotch</sprite>
       <sprite>sprites\s_checkpoint</sprite>
     </sprites>
+    <sprites name="Monsters">
+      <sprite>sprites\s_rock</sprite>
+    </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\b_world</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\reset.gml</script>
@@ -36,6 +44,10 @@
   </fonts>
   <objects name="objects">
     <object>objects\o_debug</object>
+    <objects name="Fruit">
+      <object>objects\o_banana</object>
+      <object>objects\o_apple</object>
+    </objects>
     <objects name="Snake">
       <object>objects\o_snake</object>
       <object>objects\o_tail</object>
@@ -48,7 +60,6 @@
       <object>objects\o_ramp</object>
     </objects>
     <objects name="Other">
-      <object>objects\o_banana</object>
       <object>objects\o_splotch</object>
       <object>objects\o_checkpoint</object>
     </objects>
