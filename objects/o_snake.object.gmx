@@ -81,7 +81,10 @@ instance_create(x, y, o_tail);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(15)) + 6);
+            <string>// special condition
+lives = -1;
+// glowies!
+explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(60)) + 4);
 </string>
           </argument>
         </arguments>

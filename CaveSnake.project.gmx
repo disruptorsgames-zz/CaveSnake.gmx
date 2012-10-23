@@ -39,7 +39,7 @@
   <scripts name="scripts">
     <script>scripts\reset.gml</script>
     <script>scripts\explode.gml</script>
-    <script>scripts\outside_view.gml</script>
+    <script>scripts\drawTitle.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_hud</font>
@@ -72,7 +72,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\r_windows</room>
-    <room>rooms\r_win</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
