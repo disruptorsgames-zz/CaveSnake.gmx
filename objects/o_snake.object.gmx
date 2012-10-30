@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lives = 1;
+            <string>// toggle sideways
+sideways = (room == r_world2);
 </string>
           </argument>
         </arguments>
@@ -48,16 +49,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// force movement
-if (keyboard_check(vk_left))
-    physics_apply_force(x, y, -20, 0);
-if (keyboard_check(vk_right))
-    physics_apply_force(x, y, 20, 0);
+            <string>if (sideways)
+{
+    phy_position_x += 5;
 
-// impulse movement
-if (keyboard_check(vk_up) &amp;&amp; phy_linear_velocity_y &gt; -0.1 &amp;&amp; phy_linear_velocity_y &lt; 0.1)
-    physics_apply_impulse(x, y, 0, -12);
-
+    // force movement
+    if (keyboard_check(vk_up))
+        physics_apply_force(x, y, 0, -20);
+    if (keyboard_check(vk_down))
+        physics_apply_force(x, y, 0, 20);
+}
+else
+{
+    // force movement
+    if (keyboard_check(vk_left))
+        physics_apply_force(x, y, -20, 0);
+    if (keyboard_check(vk_right))
+        physics_apply_force(x, y, 20, 0);
+    
+    // impulse movement
+    if (keyboard_check(vk_up) &amp;&amp; phy_linear_velocity_y &gt; -0.1 &amp;&amp; phy_linear_velocity_y &lt; 0.1)
+        physics_apply_impulse(x, y, 0, -12);
+}
+    
 instance_create(x, y, o_tail);
 </string>
           </argument>
@@ -107,8 +121,8 @@ explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(60)) + 4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>o_debug.startx = phy_position_x;
-o_debug.starty = phy_position_y;
+            <string>o_controller.startx = phy_position_x;
+o_controller.starty = phy_position_y;
 </string>
           </argument>
         </arguments>
@@ -131,10 +145,10 @@ o_debug.starty = phy_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (lives &gt; 0)
+            <string>if(lives &gt; 0)
     lives -= 1;
 
-explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(3)) + 3);
+explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
 </string>
           </argument>
         </arguments>

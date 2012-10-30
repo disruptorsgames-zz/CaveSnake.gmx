@@ -13,7 +13,7 @@
   <option_android_arch_mipsr2sf>True</option_android_arch_mipsr2sf>
   <option_android_arch_x86>True</option_android_arch_x86>
   <option_android_build_version>0</option_android_build_version>
-  <option_android_color_depth>0</option_android_color_depth>
+  <option_android_color_depth>1</option_android_color_depth>
   <option_android_display_name>CaveSnake</option_android_display_name>
   <option_android_flurry_enable>0</option_android_flurry_enable>
   <option_android_flurry_id></option_android_flurry_id>
@@ -127,7 +127,7 @@
   <option_mac_output_dir>~/GameMaker-Studio/CaveSnake</option_mac_output_dir>
   <option_mac_scale>-1</option_mac_scale>
   <option_mac_screenkey>-1</option_mac_screenkey>
-  <option_mac_showcursor>-1</option_mac_showcursor>
+  <option_mac_showcursor>0</option_mac_showcursor>
   <option_mac_sizeable>0</option_mac_sizeable>
   <option_mac_splash_png>Configs\Default\mac\splash.png</option_mac_splash_png>
   <option_mac_sync>0</option_mac_sync>
@@ -143,7 +143,7 @@
   <option_scaleprogress>true</option_scaleprogress>
   <option_screenkey>True</option_screenkey>
   <option_screenshotkey>true</option_screenshotkey>
-  <option_showcursor>True</option_showcursor>
+  <option_showcursor>False</option_showcursor>
   <option_showprogress>1</option_showprogress>
   <option_sizeable>False</option_sizeable>
   <option_stayontop>false</option_stayontop>

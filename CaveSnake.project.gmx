@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sfx_explode</sound>
+    <sound>sound\sfx_hit</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Fruit">
       <sprite>sprites\s_apple</sprite>
@@ -18,18 +21,29 @@
     <sprites name="World">
       <sprite>sprites\s_wall</sprite>
       <sprite>sprites\s_platform</sprite>
-      <sprite>sprites\s_box</sprite>
-      <sprite>sprites\s_block</sprite>
-      <sprite>sprites\s_ramp_r</sprite>
-      <sprite>sprites\s_ramp_l</sprite>
-      <sprite>sprites\s_checkpoint</sprite>
-      <sprite>sprites\s_finish</sprite>
-    </sprites>
-    <sprites name="Other">
-      <sprite>sprites\s_splotch</sprite>
+      <sprites name="Stationary">
+        <sprite>sprites\s_ramp_r</sprite>
+        <sprite>sprites\s_ramp_l</sprite>
+        <sprite>sprites\s_block</sprite>
+      </sprites>
+      <sprites name="Physics">
+        <sprite>sprites\s_box</sprite>
+        <sprite>sprites\s_ball</sprite>
+        <sprite>sprites\s_splotch</sprite>
+      </sprites>
+      <sprites name="Special">
+        <sprite>sprites\s_finish</sprite>
+        <sprite>sprites\s_checkpoint</sprite>
+      </sprites>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\s_rock</sprite>
+    </sprites>
+    <sprites name="Menu">
+      <sprite>sprites\s_curosr</sprite>
+      <sprite>sprites\s_start</sprite>
+      <sprite>sprites\s_options</sprite>
+      <sprite>sprites\s_quit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -40,13 +54,13 @@
     <script>scripts\reset.gml</script>
     <script>scripts\explode.gml</script>
     <script>scripts\drawTitle.gml</script>
+    <script>scripts\mouseOver.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_hud</font>
     <font>fonts\f_big</font>
   </fonts>
   <objects name="objects">
-    <object>objects\o_debug</object>
     <objects name="Fruit">
       <object>objects\o_banana</object>
       <object>objects\o_apple</object>
@@ -55,23 +69,39 @@
       <object>objects\o_snake</object>
       <object>objects\o_tail</object>
       <object>objects\o_gib</object>
+      <object>objects\o_controller</object>
     </objects>
     <objects name="World">
       <object>objects\o_wall</object>
       <object>objects\o_platform</object>
-      <object>objects\o_box</object>
-      <object>objects\o_block</object>
-      <object>objects\o_ramp_r</object>
-      <object>objects\o_ramp_l</object>
-      <object>objects\o_checkpoint</object>
-      <object>objects\o_finish</object>
+      <objects name="Physics">
+        <object>objects\o_box</object>
+        <object>objects\o_ball</object>
+        <object>objects\o_physics</object>
+        <object>objects\o_splotch</object>
+      </objects>
+      <objects name="Stationary">
+        <object>objects\o_block</object>
+        <object>objects\o_ramp_r</object>
+        <object>objects\o_ramp_l</object>
+      </objects>
+      <objects name="Special">
+        <object>objects\o_checkpoint</object>
+        <object>objects\o_finish</object>
+      </objects>
     </objects>
-    <objects name="Other">
-      <object>objects\o_splotch</object>
+    <objects name="Menu">
+      <object>objects\o_menu</object>
+      <object>objects\o_cursor</object>
+      <object>objects\o_start</object>
+      <object>objects\o_options</object>
+      <object>objects\o_quit</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\r_windows</room>
+    <room>rooms\r_menu</room>
+    <room>rooms\r_world1</room>
+    <room>rooms\r_world2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
