@@ -10,7 +10,7 @@ for(i = 0; i < argument3; i += 1)
         // set color, throw in a direction, destroy after 120 seconds
         image_blend = argument1;
         image_alpha = argument2;
-        physics_apply_force(x, y, random(45), random(45));
+        physics_apply_force(x, y, random(60) + 20, random(60) + 20);
         alarm[0] = 120;
     }
 }

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>action = r_world1;
+            <string>action = r_menu;
 </string>
           </argument>
         </arguments>

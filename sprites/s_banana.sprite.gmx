@@ -6,15 +6,16 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>2</bbox_left>
-  <bbox_right>13</bbox_right>
-  <bbox_top>1</bbox_top>
-  <bbox_bottom>13</bbox_bottom>
+  <bbox_left>0</bbox_left>
+  <bbox_right>15</bbox_right>
+  <bbox_top>0</bbox_top>
+  <bbox_bottom>15</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroup>0</TextureGroup>
   <For3D>0</For3D>
   <frames>
     <frame index="0">images\s_banana_0.png</frame>
+    <frame index="1">images\s_banana_1.png</frame>
   </frames>
 </sprite>

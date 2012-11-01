@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 10;
+
+// halloween
+image_single = 1;
 </string>
           </argument>
         </arguments>

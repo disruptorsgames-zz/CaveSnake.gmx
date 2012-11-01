@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>// toggle sideways
 sideways = (room == r_world2);
+
+// halloween
+image_single = 1;
 </string>
           </argument>
         </arguments>
@@ -68,8 +71,11 @@ else
         physics_apply_force(x, y, 20, 0);
     
     // impulse movement
-    if (keyboard_check(vk_up) &amp;&amp; phy_linear_velocity_y &gt; -0.1 &amp;&amp; phy_linear_velocity_y &lt; 0.1)
+    if (keyboard_check_pressed(vk_up) &amp;&amp; phy_linear_velocity_y &gt; -0.1 &amp;&amp; phy_linear_velocity_y &lt; 0.1)
+    {
+        audio_play_sound(sfx_jump, 10, false);
         physics_apply_impulse(x, y, 0, -12);
+    }
 }
     
 instance_create(x, y, o_tail);
@@ -95,7 +101,9 @@ instance_create(x, y, o_tail);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// special condition
+            <string>audio_play_sound(sfx_win, 10, false);
+
+// special condition
 lives = -1;
 // glowies!
 explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(60)) + 4);
@@ -121,7 +129,9 @@ explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(60)) + 4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>o_controller.startx = phy_position_x;
+            <string>audio_play_sound(sfx_checkpoint, 10, false);
+
+o_controller.startx = phy_position_x;
 o_controller.starty = phy_position_y;
 </string>
           </argument>
@@ -145,10 +155,58 @@ o_controller.starty = phy_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(lives &gt; 0)
+            <string>audio_play_sound(sfx_die, 10, false);
+
+if(lives &gt; 0)
     lives -= 1;
 
 explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="o_apple">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_play_sound(sfx_apple, 10, false);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="o_banana">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_play_sound(sfx_fruit, 10, false);
 </string>
           </argument>
         </arguments>

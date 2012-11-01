@@ -30,7 +30,19 @@
     image_alpha = 0.5;
     
     if (mouse_check_button(mb_left))
-        room = action;
+    {
+        switch (object_index)
+        {
+            case o_start:
+                room_goto(r_world1);
+                break;
+            case o_options:
+                break;
+            case o_quit:
+                game_end();
+                break;
+        }
+    }
 }
 else
     image_alpha = 1;

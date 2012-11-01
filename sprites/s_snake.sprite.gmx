@@ -16,5 +16,6 @@
   <For3D>0</For3D>
   <frames>
     <frame index="0">images\s_snake_0.png</frame>
+    <frame index="1">images\s_snake_1.png</frame>
   </frames>
 </sprite>

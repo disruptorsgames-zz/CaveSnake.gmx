@@ -7,6 +7,12 @@
   <sounds name="sound">
     <sound>sound\sfx_explode</sound>
     <sound>sound\sfx_hit</sound>
+    <sound>sound\sfx_fruit</sound>
+    <sound>sound\sfx_die</sound>
+    <sound>sound\sfx_jump</sound>
+    <sound>sound\sfx_checkpoint</sound>
+    <sound>sound\sfx_apple</sound>
+    <sound>sound\sfx_win</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Fruit">

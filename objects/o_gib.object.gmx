@@ -31,7 +31,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_splotch">
+    <event eventtype="4" ename="o_block">
       <action>
         <libid>1</libid>
         <id>605</id>
@@ -53,7 +53,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_block">
+    <event eventtype="4" ename="o_splotch">
       <action>
         <libid>1</libid>
         <id>605</id>
