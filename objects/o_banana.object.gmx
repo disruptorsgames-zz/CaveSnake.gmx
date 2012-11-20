@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// halloween
-image_single = 1;
+            <string>// set to a single image in the sprite sequence
+image_single = 0;
 </string>
           </argument>
         </arguments>
@@ -54,7 +54,7 @@ image_single = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_splotch">
+    <event eventtype="4" ename="o_box">
       <action>
         <libid>1</libid>
         <id>605</id>
@@ -76,7 +76,7 @@ image_single = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_box">
+    <event eventtype="4" ename="o_splotch">
       <action>
         <libid>1</libid>
         <id>605</id>

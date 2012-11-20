@@ -7,11 +7,11 @@
   <sounds name="sound">
     <sound>sound\sfx_explode</sound>
     <sound>sound\sfx_hit</sound>
-    <sound>sound\sfx_fruit</sound>
+    <sound>sound\sfx_pickup</sound>
     <sound>sound\sfx_die</sound>
     <sound>sound\sfx_jump</sound>
     <sound>sound\sfx_checkpoint</sound>
-    <sound>sound\sfx_apple</sound>
+    <sound>sound\sfx_bonus</sound>
     <sound>sound\sfx_win</sound>
   </sounds>
   <sprites name="sprites">
@@ -60,7 +60,6 @@
     <script>scripts\reset.gml</script>
     <script>scripts\explode.gml</script>
     <script>scripts\drawTitle.gml</script>
-    <script>scripts\mouseOver.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_hud</font>
@@ -81,10 +80,10 @@
       <object>objects\o_wall</object>
       <object>objects\o_platform</object>
       <objects name="Physics">
-        <object>objects\o_box</object>
-        <object>objects\o_ball</object>
         <object>objects\o_physics</object>
         <object>objects\o_splotch</object>
+        <object>objects\o_box</object>
+        <object>objects\o_ball</object>
       </objects>
       <objects name="Stationary">
         <object>objects\o_block</object>
@@ -105,9 +104,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\r_world2</room>
     <room>rooms\r_menu</room>
     <room>rooms\r_world1</room>
-    <room>rooms\r_world2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
