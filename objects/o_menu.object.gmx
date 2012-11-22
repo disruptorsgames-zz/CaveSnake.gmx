@@ -75,7 +75,10 @@
 switch (object_index)
 {
     case o_start:
-        room_goto(r_world1);
+        if (keyboard_check(vk_shift))
+            room_goto(r_world2);
+        else 
+            room_goto(r_world1);
         break;
     case o_options:
         break;

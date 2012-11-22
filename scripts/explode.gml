@@ -11,7 +11,7 @@ for(i = 0; i < argument3; i += 1)
         image_blend = argument1;
         image_alpha = argument2;
         physics_apply_force(x, y, random(60) + 20, random(60) + 20);
-        alarm[0] = 120;
+        alarm[0] = 600;
     }
 }
 

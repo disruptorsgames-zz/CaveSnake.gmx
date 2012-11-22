@@ -183,7 +183,7 @@ explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_apple, 10, false);
+            <string>audio_play_sound(sfx_bonus, 10, false);
 </string>
           </argument>
         </arguments>
@@ -206,7 +206,7 @@ explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_fruit, 10, false);
+            <string>audio_play_sound(sfx_pickup, 10, false);
 </string>
           </argument>
         </arguments>
