@@ -1,16 +1,18 @@
-draw_set_font(f_big);
-draw_set_halign(true);
+// find center of view
+centerx = view_wview[0] / 2;
+centery = (view_hview[0] - 100) / 2;
 
-// get center (offset a little for font)
-centerX = view_wview[0] / 2;
-centerY = (view_hview[0] - 100) / 2;
-
-draw_roundrect(0, centerY - 20, room_width, centerY + 116, 0);
-draw_text_color(centerX, centerY, argument0, argument1, argument2, argument3, argument4, 1);
+// add backdrop for visibility
+draw_roundrect(0, centery - 20, room_width, centery + 116, 0);
+drawTextExt(centerx, centery, argument0, argument1, 1, f_big, fa_center);
 
 // instructions to restart
-if (argument5)
+if (argument2)
 {
-    draw_set_font(f_hud);
-    draw_text_color(centerX, centerY + 64, "(press enter to respawn)", c_white, c_white, c_white, c_white, 1);
+    if (isDevice()) 
+        text = "Tap";
+    else
+        text = "Press Enter";
+        
+    drawTextExt(centerx, centery + 64, "(" + text + " to continue)", c_white, 1, f_hud, fa_center);
 }

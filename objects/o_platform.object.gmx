@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
+            <string>/// Initialize
+image_alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -54,28 +55,6 @@
       </action>
     </event>
     <event eventtype="4" ename="o_box">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Null</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="o_splotch">
       <action>
         <libid>1</libid>
         <id>605</id>
@@ -180,7 +159,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, image_single, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            <string>/// Draw Sprite
+draw_self();
 </string>
           </argument>
         </arguments>

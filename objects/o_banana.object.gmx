@@ -76,28 +76,6 @@ image_single = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_splotch">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Null</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="o_wall">
       <action>
         <libid>1</libid>
@@ -201,8 +179,8 @@ instance_destroy();
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>2,14</point>
-    <point>14,2</point>
-    <point>12,12</point>
+    <point>12,20</point>
+    <point>12,8</point>
+    <point>24,24</point>
   </PhysicsShapePoints>
 </object>

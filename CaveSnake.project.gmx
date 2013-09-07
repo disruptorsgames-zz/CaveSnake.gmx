@@ -5,28 +5,51 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sfx_explode</sound>
-    <sound>sound\sfx_hit</sound>
-    <sound>sound\sfx_pickup</sound>
-    <sound>sound\sfx_die</sound>
-    <sound>sound\sfx_jump</sound>
-    <sound>sound\sfx_checkpoint</sound>
-    <sound>sound\sfx_bonus</sound>
-    <sound>sound\sfx_win</sound>
+    <sounds name="SFX">
+      <sound>sound\sfx_win</sound>
+      <sound>sound\sfx_oneup</sound>
+      <sound>sound\sfx_explode</sound>
+      <sound>sound\sfx_hit</sound>
+      <sound>sound\sfx_pickup</sound>
+      <sound>sound\sfx_bonus</sound>
+      <sound>sound\sfx_checkpoint</sound>
+      <sound>sound\sfx_jump</sound>
+      <sound>sound\sfx_die</sound>
+      <sound>sound\sfx_mongoose_hit</sound>
+      <sound>sound\sfx_mongoose_sight</sound>
+      <sound>sound\sfx_mongoose_die</sound>
+      <sound>sound\sfx_select</sound>
+    </sounds>
+    <sounds name="Music">
+      <sound>sound\sfx_music</sound>
+      <sound>sound\sfx_intro</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Fruit">
       <sprite>sprites\s_apple</sprite>
       <sprite>sprites\s_banana</sprite>
     </sprites>
+    <sprites name="GUI">
+      <sprite>sprites\s_sound</sprite>
+      <sprite>sprites\s_heart</sprite>
+    </sprites>
+    <sprites name="Monsters">
+      <sprite>sprites\s_mongoose</sprite>
+      <sprite>sprites\s_mongoose_h</sprite>
+    </sprites>
     <sprites name="Snake">
-      <sprite>sprites\s_tail</sprite>
       <sprite>sprites\s_snake</sprite>
-      <sprite>sprites\s_gib</sprite>
+      <sprite>sprites\s_tail</sprite>
     </sprites>
     <sprites name="World">
-      <sprite>sprites\s_wall</sprite>
+      <sprite>sprites\s_gib</sprite>
       <sprite>sprites\s_platform</sprite>
+      <sprite>sprites\s_wall</sprite>
+      <sprites name="Special">
+        <sprite>sprites\s_finish</sprite>
+        <sprite>sprites\s_checkpoint</sprite>
+      </sprites>
       <sprites name="Stationary">
         <sprite>sprites\s_ramp_r</sprite>
         <sprite>sprites\s_ramp_l</sprite>
@@ -35,53 +58,96 @@
       <sprites name="Physics">
         <sprite>sprites\s_box</sprite>
         <sprite>sprites\s_ball</sprite>
-        <sprite>sprites\s_splotch</sprite>
       </sprites>
-      <sprites name="Special">
-        <sprite>sprites\s_finish</sprite>
-        <sprite>sprites\s_checkpoint</sprite>
-      </sprites>
-    </sprites>
-    <sprites name="Monsters">
-      <sprite>sprites\s_rock</sprite>
-    </sprites>
-    <sprites name="Menu">
-      <sprite>sprites\s_curosr</sprite>
-      <sprite>sprites\s_start</sprite>
-      <sprite>sprites\s_options</sprite>
-      <sprite>sprites\s_quit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\b_world</background>
+    <background>background\b_mountains</background>
+    <background>background\b_clouds</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\reset.gml</script>
-    <script>scripts\explode.gml</script>
-    <script>scripts\drawTitle.gml</script>
+    <scripts name="Checks">
+      <script>scripts\inMenu.gml</script>
+      <script>scripts\isDevice.gml</script>
+      <script>scripts\onGround.gml</script>
+      <script>scripts\mouseOver.gml</script>
+      <script>scripts\isKey.gml</script>
+    </scripts>
+    <scripts name="Draw">
+      <script>scripts\drawText.gml</script>
+      <script>scripts\drawTextExt.gml</script>
+      <script>scripts\drawTitle.gml</script>
+    </scripts>
+    <scripts name="Events">
+      <script>scripts\explode.gml</script>
+    </scripts>
+    <scripts name="Functions">
+      <script>scripts\bind.gml</script>
+      <script>scripts\deselect.gml</script>
+      <script>scripts\select.gml</script>
+      <script>scripts\getKey.gml</script>
+    </scripts>
+    <scripts name="Game">
+      <script>scripts\init.gml</script>
+      <script>scripts\reset.gml</script>
+    </scripts>
+    <scripts name="Sound">
+      <script>scripts\eatFruit.gml</script>
+      <script>scripts\playSound.gml</script>
+      <script>scripts\playMusic.gml</script>
+    </scripts>
+    <scripts name="View">
+      <script>scripts\setView.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_hud</font>
+    <font>fonts\f_hud_d</font>
     <font>fonts\f_big</font>
+    <font>fonts\f_big_d</font>
   </fonts>
   <objects name="objects">
     <objects name="Fruit">
       <object>objects\o_banana</object>
       <object>objects\o_apple</object>
     </objects>
+    <objects name="GUI">
+      <object>objects\o_command</object>
+    </objects>
+    <objects name="Menu">
+      <objects name="Main">
+        <object>objects\o_options</object>
+        <object>objects\o_quit</object>
+        <object>objects\o_start</object>
+      </objects>
+      <objects name="Options">
+        <object>objects\o_maxfps</object>
+        <object>objects\o_left</object>
+        <object>objects\o_right</object>
+        <object>objects\o_jump</object>
+      </objects>
+      <object>objects\o_back</object>
+      <object>objects\o_menu</object>
+      <object>objects\o_textbox</object>
+    </objects>
+    <objects name="Monsters">
+      <object>objects\o_mongoose</object>
+      <object>objects\o_mongoose_h</object>
+    </objects>
     <objects name="Snake">
       <object>objects\o_snake</object>
       <object>objects\o_tail</object>
-      <object>objects\o_gib</object>
       <object>objects\o_controller</object>
     </objects>
     <objects name="World">
+      <object>objects\o_generator</object>
+      <object>objects\o_gib</object>
       <object>objects\o_wall</object>
       <object>objects\o_platform</object>
       <objects name="Physics">
         <object>objects\o_physics</object>
-        <object>objects\o_splotch</object>
         <object>objects\o_box</object>
         <object>objects\o_ball</object>
       </objects>
@@ -95,18 +161,18 @@
         <object>objects\o_finish</object>
       </objects>
     </objects>
-    <objects name="Menu">
-      <object>objects\o_menu</object>
-      <object>objects\o_cursor</object>
-      <object>objects\o_start</object>
-      <object>objects\o_options</object>
-      <object>objects\o_quit</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_menu</room>
+    <room>rooms\r_options</room>
+    <room>rooms\r_720p</room>
+    <room>rooms\r_ios</room>
     <room>rooms\r_world1</room>
     <room>rooms\r_world2</room>
+    <room>rooms\r_world3</room>
+    <room>rooms\r_world4</room>
+    <room>rooms\r_world5</room>
+    <room>rooms\r_generator</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

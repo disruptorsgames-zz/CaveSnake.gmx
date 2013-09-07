@@ -25,19 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>time = 3;
-lives = 3;
+            <string>/// Initialize
+time = 3;
+win = false;
+startx = x;
+starty = y;
+nextOneUp = score + 100 - (score mod 100);
 
-if (room = r_world1)
-{
-    startx = (room_width - 16) / 2;
-    starty = 16;
-}
-else if(room = r_world2)
-{
-    startx = 32;
-    starty = (room_height - 16) / 2;
-}
+// set lives
+if (lives == -1)
+    lives = 3;
+
+playMusic(sfx_music);
+        
+// game spawners
+instance_create(16, 16, o_command);
 </string>
           </argument>
         </arguments>
@@ -60,40 +62,93 @@ else if(room = r_world2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room != r_menu)
+            <string>/// Check For Rotation
+if (isDevice())
+    setView();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Count Down
+if (time &gt; 0)
+    time -= 0.0075;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn And Click To Continue
+if (time &lt;= 1)
 {
-    // countdown
-    if (time &gt; 0)
-        time -= 0.025;
-    
-    // spawn!
-    if (time = 0 &amp;&amp; !instance_exists(o_snake) &amp;&amp; lives = 3)
-        instance_create(startx, starty, o_snake);
-    
-    if(keyboard_check_pressed(vk_enter))
+    // spawn
+    if (time &gt; 0.5 &amp;&amp; !win)
     {
-        // alive but no snake
-        if (lives &gt; 0 &amp;&amp; !instance_exists(o_snake))
-            instance_create(startx, starty, o_snake);
-        // game over
-        else if (lives = 0)
-            game_restart();
+        time = 0;
+        instance_create(startx, starty, o_snake);
+    }
+    else if(mouse_check_button_pressed(mb_left) || keyboard_check(vk_enter))
+    {
         // special win condition
-        else if (lives = -1)
+        if (win)
         {
             // determine where to go based on current room
             switch(room)
             {
-                // go to world 2
+                // go to next worlds
                 case r_world1:
                     room_goto(r_world2);
                     break;
-                // reset
                 case r_world2:
-                    room_goto(r_menu);
+                    room_goto(r_world3);
+                    break;
+                case r_world3:
+                    room_goto(r_world4);
+                    break;
+                case r_world4:
+                    room_goto(r_world5);
+                    break;
+                default:
+                    game_restart();
                     break;
             }
         }
+        // alive but no snake
+        else if (lives &gt; 0 &amp;&amp; !instance_exists(o_snake))
+            instance_create(startx, starty, o_snake);
+        // game over
+        else if (lives == 0)
+            game_restart();
     }
 }
 </string>
@@ -118,45 +173,54 @@ else if(room = r_world2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// only show in game, not menu
-if (room != r_menu)
+            <string>/// Stats
+
+// lives
+for(i = 0; i &lt; lives; i++)
 {
-    // draw the score and lives
-    draw_set_font(f_hud);
-    draw_set_halign(false);
-    draw_roundrect(16, 16, 128, 55, 0);
-    draw_text_color(22, 16, "Score:" + string(score), c_green, c_lime, c_green, c_lime, 1);
-    draw_text_color(22, 32, "Lives:" + string(lives), c_maroon, c_red, c_maroon, c_red, 1);
-    
-    // text based on lives
-    switch (lives)
-    {
-        // test
-        case 3:
-            if (time &gt; 0)
-                drawTitle(string(round(time)), c_white, c_gray, c_white, c_gray, false);
-            break;
-        // first death
-        case 2:
-            if (!instance_exists(o_snake))
-                drawTitle("Oops!", c_red, c_maroon, c_red, c_maroon, true);
-            break;
-        // last guy!
-        case 1:
-            if (!instance_exists(o_snake))
-                drawTitle("Last life!", c_red, c_maroon, c_red, c_maroon, true);
-            break;
-        // game over man!
-        case 0:
-            drawTitle("Game Over!", c_red, c_maroon, c_red, c_maroon, true);
-            break;
-        // win
-        case -1:
-            color = make_color_rgb(181, 230, 29);
-            drawTitle("Nice Job!", color, c_green, color, c_green, true);
-            break;
-    }
+    draw_sprite(s_heart, -1, 8 + i * 18, view_hview[0] - 24);
 }
+
+// score
+txt = "Score: " + string(score);
+drawText((view_wview[0] - string_width(txt)) / 2, 2, txt, c_green);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Titles
+
+// cound down
+if (time &gt; 0 &amp;&amp; !win)
+    drawTitle(round(time), c_gray, false);
+// congrats!
+else if (win)
+    drawTitle("Nice Job!", c_green, true);
+// first death
+else if (lives &gt;= 2 &amp;&amp; !instance_exists(o_snake))
+    drawTitle("Ouch!", c_maroon, true);
+// last guy!
+else if (lives == 1 &amp;&amp; !instance_exists(o_snake))
+    drawTitle("Last life!", c_maroon, true);
+// game over man!
+else if (lives == 0)
+    drawTitle("Game Over!", c_maroon, true);
 </string>
           </argument>
         </arguments>
@@ -179,10 +243,49 @@ if (room != r_menu)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(debug_mode)
+            <string>/// Physics Debug
+if(debug_mode)
 {
-    flag = phy_debug_render_shapes | phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
+    flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
     physics_world_draw_debug(flag);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Are You Sure You Want To Quit?
+if (room != r_menu)
+{
+    // confirmation
+    if (show_question("Are you sure you want to end this game and go back to the main menu?"))
+        game_restart();
+        
+    // always reset score
+    score = 0;
+}
+else if (room == r_menu)
+{
+    // confirmation
+    if (show_question("Are you sure you want to quit the game?"))
+        game_end();   
 }
 </string>
           </argument>

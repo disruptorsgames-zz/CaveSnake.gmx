@@ -1,5 +1,4 @@
 // create x many shards
-var i;
 for(i = 0; i < argument3; i += 1)
 {
     // create a shard of given object type
@@ -10,7 +9,7 @@ for(i = 0; i < argument3; i += 1)
         // set color, throw in a direction, destroy after 120 seconds
         image_blend = argument1;
         image_alpha = argument2;
-        physics_apply_force(x, y, random(60) + 20, random(60) + 20);
+        physics_apply_force(x, y, random(100) + 20, random(100) + 20);
         alarm[0] = 600;
     }
 }

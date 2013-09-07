@@ -5,5 +5,3 @@ phy_speed_x = 0;
 phy_speed_y = 0;
 
 score = 0;
-
-//room_restart();

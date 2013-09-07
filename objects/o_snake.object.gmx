@@ -3,7 +3,7 @@
   <spriteName>s_snake</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// toggle sideways
-sideways = (room == r_world2);
+            <string>/// Initialize
+
+// look at me!
+view_object[0] = id;
+
+// prevent spinning
+phy_fixed_rotation = true;
+
+// toggle sideways
+sideways = (room == r_generator);
+
+// power
+spd = 40;
+accel = 1.75;
+// device
+dx = 0;
+dy = 0;
+dz = 0;
 
 // set to a single image in the sprite sequence
 image_single = 0;
@@ -52,32 +68,90 @@ image_single = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (sideways)
-{
-    phy_position_x += 5;
+            <string>/// Player Movement
 
-    // force movement
-    if (keyboard_check(vk_up))
-        physics_apply_force(x, y, 0, -20);
-    if (keyboard_check(vk_down))
-        physics_apply_force(x, y, 0, 20);
-}
-else
+// motion controls
+if (os_type == os_ios)
 {
-    // force movement
-    if (keyboard_check(vk_left))
-        physics_apply_force(x, y, -20, 0);
-    if (keyboard_check(vk_right))
-        physics_apply_force(x, y, 20, 0);
+    // accelerometer
+    dx = device_get_tilt_x() * spd * accel;
+    dy = device_get_tilt_y() * spd * accel;
+    dz = device_get_tilt_z() * spd * accel;
     
-    // impulse movement
-    if (keyboard_check_pressed(vk_up) &amp;&amp; phy_linear_velocity_y &gt; -0.1 &amp;&amp; phy_linear_velocity_y &lt; 0.1)
+    switch (display_get_orientation())
     {
-        audio_play_sound(sfx_jump, 10, false);
-        physics_apply_impulse(x, y, 0, -12);
+        // reverse of y for landscape
+        case display_landscape:
+            physics_apply_force(x, y, -dy, 0);
+            break;
+        case display_portrait:
+            physics_apply_force(x, y, dx, 0);
+            break;
+    }
+    
+    // jump
+    if (mouse_check_button_pressed(mb_left) &amp;&amp; onGround(phy_position_x, phy_position_y))
+    {
+        playSound(sfx_jump);
+        physics_apply_impulse(x, y, 0, -spd / 2);
     }
 }
-    
+// keyboard movement
+else
+{
+    // level 2 sideways movement
+    if (sideways)
+    {
+        // up and down
+        if (keyboard_check(global.JUMP))
+            physics_apply_force(x, y, 0, -spd);
+        if (keyboard_check(global.DOWN))
+            physics_apply_force(x, y, 0, spd);
+            
+        // jump
+        if (keyboard_check_pressed(global.LEFT) &amp;&amp; onGround(phy_position_x, phy_position_y))
+        {
+            playSound(sfx_jump);
+            physics_apply_impulse(x, y, -spd / 2, 0);
+        }
+    }
+    else
+    {
+        // left and right
+        if (keyboard_check(global.LEFT))
+            physics_apply_force(x, y, -spd, 0);
+        if (keyboard_check(global.RIGHT))
+            physics_apply_force(x, y, spd, 0);
+        
+        // jump
+        if (keyboard_check_pressed(global.JUMP) &amp;&amp; onGround(phy_position_x, phy_position_y))
+        {
+            playSound(sfx_jump);
+            physics_apply_impulse(x, y, 0, -spd / 2);
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Tail    
 instance_create(x, y, o_tail);
 </string>
           </argument>
@@ -101,11 +175,51 @@ instance_create(x, y, o_tail);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_win, 10, false);
-
-// special condition
-lives = -1;
-// glowies!
+            <string>/// Sound Fx
+playSound(sfx_win);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set Special Condition
+o_controller.win = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Explode
 explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(60)) + 4);
 </string>
           </argument>
@@ -129,8 +243,29 @@ explode(o_gib, make_color_rgb(255, 255, 0), 0.75, round(random(60)) + 4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_checkpoint, 10, false);
-
+            <string>/// Sound Fx
+playSound(sfx_checkpoint);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset Start Location
 o_controller.startx = phy_position_x;
 o_controller.starty = phy_position_y;
 </string>
@@ -155,12 +290,146 @@ o_controller.starty = phy_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_die, 10, false);
-
+            <string>/// Sound Fx
+playSound(sfx_die);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Lose Life
 if(lives &gt; 0)
     lives -= 1;
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Explode
 explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="o_mongoose_h">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Bounce
+physics_apply_impulse(other.x, other.y, 0, -20);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="o_mongoose">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Sound Fx
+playSound(sfx_die);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Lose Life
+if(lives &gt; 0)
+    lives -= 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Explode
+explode(o_gib, make_color_rgb(255, 230, 29), 0.75, round(random(6)) + 6);
 </string>
           </argument>
         </arguments>
@@ -183,7 +452,8 @@ explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_bonus, 10, false);
+            <string>/// Sound Fx
+eatFruit(sfx_bonus);
 </string>
           </argument>
         </arguments>
@@ -206,30 +476,8 @@ explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sfx_pickup, 10, false);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, image_single, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            <string>/// Sound Fx
+eatFruit(sfx_pickup);
 </string>
           </argument>
         </arguments>
@@ -242,8 +490,8 @@ explode(o_gib, make_color_rgb(181, 230, 29), 0.75, round(random(6)) + 6);
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>1</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>1.5</PhysicsObjectAngularDamping>
+  <PhysicsObjectLinearDamping>2.25</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
+            <string>/// Initialize
+image_alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -48,7 +49,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, image_single, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            <string>/// Draw Sprite
+draw_self();
 </string>
           </argument>
         </arguments>
