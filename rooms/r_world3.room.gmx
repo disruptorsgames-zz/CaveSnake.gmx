@@ -6,7 +6,7 @@
   <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
-  <speed>120</speed>
+  <speed>60</speed>
   <persistent>0</persistent>
   <colour>14267782</colour>
   <showcolour>-1</showcolour>
@@ -26,8 +26,8 @@
     <deleteUnderlyingObj>-1</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>1</page>
-    <xoffset>254</xoffset>
-    <yoffset>3631</yoffset>
+    <xoffset>438</xoffset>
+    <yoffset>3713</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

@@ -35,10 +35,10 @@ switch (object_index)
         ini_write_real("movement", "down", getReal(argument0));
         ini_close();
         break;
-    case o_fps:
-        global.FPS = value;
+    case o_stats:
+        global.STATS = value;
         ini_open(CONFIGFILE);
-        ini_write_real("settings", "fps", getReal(argument0));
+        ini_write_real("settings", "stats", getReal(argument0));
         ini_close();
         break;
     case o_mute:

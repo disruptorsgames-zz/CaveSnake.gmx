@@ -40,6 +40,29 @@ else
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for Rotation
+if (isDevice())
+    setView();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -58,19 +81,28 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// FPS
-if (global.FPS)
+            <string>/// Stats
+
+// FPS
+if (global.STATS)
 {
-    if (fps &lt;= 30)
+    if (fps_real &lt;= 30)
         color = c_red;
-    else if (fps &lt;= 50)
+    else if (fps_real &lt;= 50)
         color = c_orange;
-    else if(fps &gt;= 60)
+    else if(fps_real &gt;= 60)
         color = c_lime;
     else
         color = c_white;
     
-    drawText(8, 2, string(fps), color);
+    drawText(8, 2, string(round(fps_real)), color);
+}
+
+// GUI Size
+if (global.STATS)
+{
+    size = "(" + string(display_get_gui_width()) + "x" + string(display_get_gui_height()) + ")";
+    drawText(view_wview[0] - (8 + string_width(size)), view_hview[0] - (2 + string_height(size)), size, color);
 }
 </string>
           </argument>
@@ -146,9 +178,9 @@ if (global.TYPING == -1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Toggle FPS
+            <string>/// Toggle Stats
 if (global.TYPING == -1)
-    global.FPS = !global.FPS;
+    global.STATS = !global.STATS;
 </string>
           </argument>
         </arguments>

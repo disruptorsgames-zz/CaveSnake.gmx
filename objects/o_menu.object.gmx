@@ -53,31 +53,6 @@ if (hover)
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Device check
-if (isDevice())
-    font = f_big_d;
-else
-    font = f_big;
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -126,10 +101,7 @@ else
             <kind>1</kind>
             <string>/// Draw Rectangle (Debug)
 if(debug_mode)
-{
-    // setHover(x - 96, x + 96, y, y + 64);
     draw_rectangle_color(x - w, y, x + w, y + 64, c_red, c_maroon, c_red, c_maroon, true);
-}
 </string>
           </argument>
         </arguments>
@@ -151,7 +123,7 @@ if(debug_mode)
           <argument>
             <kind>1</kind>
             <string>/// Draw String
-drawTextExt(x, y - 4, text, color, alpha, font, fa_center);
+drawTextExt(x, y - 4, text, color, alpha, f_big, fa_center);
 </string>
           </argument>
         </arguments>

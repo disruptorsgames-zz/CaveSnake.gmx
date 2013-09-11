@@ -1,7 +1,7 @@
 ini_open(CONFIGFILE);
 // settings
 global.MUTE = ini_read_real("settings", "mute", false);
-global.FPS = ini_read_real("settings", "fps", true);
+global.STATS = ini_read_real("settings", "stats", true);
 global.MAXFPS = ini_read_real("settings", "maxfps", room_speed);
 // movement
 global.LEFT = ini_read_real("movement", "left", vk_left);
