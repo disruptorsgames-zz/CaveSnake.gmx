@@ -25,55 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Click
-if (hover)
+            <string>/// Key Binding
+if (global.TYPING != id &amp;&amp; hover &amp;&amp; mouse_check_button_pressed(mb_left))
 {
-    // selected item
-    if (mouse_check_button_pressed(mb_left))
+    global.TYPING = id;
+    depth = -1;
+}
+
+if (global.TYPING == id)
+{
+    // cancel
+    if (keyboard_lastkey == vk_escape)
     {
-        // where to go
-        switch (object_index)
-        {
-            case o_start:
-                room_goto(r_world1);
-                break;
-            case o_options:
-                room_goto(r_options);
-                break;
-            case o_back:
-                room_goto_previous();
-                break;
-            case o_quit:
-                game_end();
-                break;
-        }
+        global.TYPING = -1;
+        keyboard_lastkey = 0;
+        depth = 0;
+    }
+    else if(keyboard_lastkey != 0 &amp;&amp; keyboard_lastkey != -1)
+    {
+        text = keyboard_lastkey;
+        global.TYPING = -1;
+        keyboard_lastkey = 0;
+        bind(text);
+        depth = 0;
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Device check
-if (isDevice())
-    font = f_big_d;
-else
-    font = f_big;
 </string>
           </argument>
         </arguments>
@@ -97,39 +73,7 @@ else
           <argument>
             <kind>1</kind>
             <string>/// Set Hover
-w = ternary(string_width(text) &gt; 96, string_width(text) / 2, 96);
-hover = mouseOver(x - w, x + w, y, y + 64);
-
-if (hover)
-    alpha = 1;
-else
-    alpha = 0.75;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw Rectangle (Debug)
-if(debug_mode)
-{
-    // setHover(x - 96, x + 96, y, y + 64);
-    draw_rectangle_color(x - w, y, x + w, y + 64, c_red, c_maroon, c_red, c_maroon, true);
-}
+hover = mouseOver(x, x + width, y, y + 24);
 </string>
           </argument>
         </arguments>
@@ -151,7 +95,40 @@ if(debug_mode)
           <argument>
             <kind>1</kind>
             <string>/// Draw String
-drawTextExt(x, y - 4, text, color, alpha, font, fa_center);
+drawText(x - (string_length(title) * 10), y + 2, title, color);
+
+if (global.TYPING == id)
+    drawTitle("Press any key", c_gray, false);
+else
+{
+    if (hover)
+        c = color;
+    else
+        c = c_black;
+
+    // key masks
+    switch(getReal(text))
+    {
+        case vk_left:
+            drawText(x + 4, y + 2, "LEFT", c);
+            break;
+        case vk_right:
+            drawText(x + 4, y + 2, "RIGHT", c);
+            break;
+        case vk_up:
+            drawText(x + 4, y + 2, "UP", c);
+            break;
+        case vk_down:
+            drawText(x + 4, y + 2, "DOWN", c);
+            break;
+        case vk_space:
+            drawText(x + 4, y + 2, "SPACE", c);
+        default:
+            drawText(x + 4, y + 2, chr(text), c);
+            break;
+    }
+}
+
 </string>
           </argument>
         </arguments>

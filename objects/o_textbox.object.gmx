@@ -26,49 +26,20 @@
           <argument>
             <kind>1</kind>
             <string>/// Select / Deselect
-if (hover)
+
+// select
+if (global.TYPING != id &amp;&amp; hover &amp;&amp; mouse_check_button_pressed(mb_left))
 {
-    if (mouse_check_button_pressed(mb_left) &amp;&amp; global.TYPING != id)
-    {
-        // keys that allow binding
-        if (isKey(text))
-        {
-            if (keyboard_lastkey != -1)
-            {
-                text = keyboard_lastkey;
-                keyboard_lastkey = -1;
-                global.TYPING = -1;
-                deselect(text);
-            }
-        }
-        else
-        {
-            global.TYPING = id;
-            keyboard_string = text;
-        }
-    }
+    global.TYPING = id;
+    keyboard_string = text;
 }
-else if (mouse_check_button_pressed(mb_left) &amp;&amp; global.TYPING == id)
+// deselect
+else if (global.TYPING == id &amp;&amp; (mouse_check_button_pressed(mb_left) || keyboard_check_pressed(vk_tab)))
 {
     global.TYPING = -1;
     keyboard_string = "";
     text = deselect(text);
-    
-    // set
-    switch (object_index)
-    {
-        case o_maxfps:
-            maxFps = real(string_digits(text));
-            if (maxFps &gt;= 60 &amp;&amp; maxFps &lt;= 120)
-                global.MAXFPS = maxFps;
-            break;
-        case o_left:
-            global.LEFT = text;
-            break;
-        case o_right:
-            global.RIGHT = text;
-            break;
-    }
+    bind(text);
 }
 </string>
           </argument>
@@ -144,6 +115,8 @@ if(hover)
           <argument>
             <kind>1</kind>
             <string>/// Draw String
+drawText(x - (string_length(title) * 10), y + 2, title, color);
+
 if (global.TYPING == id)
 {
     if (string_length(keyboard_string) &lt; 4)
@@ -151,30 +124,10 @@ if (global.TYPING == id)
     else
         keyboard_string = deselect(text);
 
-    //drawText(x + 4, y + 2, text, c_black);
-    drawTitle("Press any key", c_gray, false);
+    drawText(x + 4, y + 2, text, c_black);
 }
 else
-{
-    // key masks
-    switch(getKey(text))
-    {
-        case vk_left:
-            drawText(x + 4, y + 2, "LEFT", c_black);
-            break;
-        case vk_up:
-            drawText(x + 4, y + 2, "UP", c_black);
-            break;    
-        case vk_right:
-            drawText(x + 4, y + 2, "RIGHT", c_black);
-            break;
-        default:
-            drawText(x + 4, y + 2, chr(text), c_black);
-            break;
-    }
-}
-
-drawText(x - (string_length(title) * 10), y + 2, title, color);
+    drawText(x + 4, y + 2, text, c_black);
 
 </string>
           </argument>

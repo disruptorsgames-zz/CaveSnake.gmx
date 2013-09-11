@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>o_key</parentName>
+  <parentName>o_toggle</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize
-title = "Move Right:";
-text = global.RIGHT;
+title = "Mute:";
+value = global.MUTE;
 width = 48;
 color = make_color_rgb(181, 230, 29);
 </string>

@@ -33,6 +33,7 @@
     <sprites name="GUI">
       <sprite>sprites\s_sound</sprite>
       <sprite>sprites\s_heart</sprite>
+      <sprite>sprites\s_keyboard</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\s_mongoose</sprite>
@@ -64,7 +65,6 @@
   <backgrounds name="background">
     <background>background\b_world</background>
     <background>background\b_mountains</background>
-    <background>background\b_clouds</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -87,7 +87,8 @@
       <script>scripts\bind.gml</script>
       <script>scripts\deselect.gml</script>
       <script>scripts\select.gml</script>
-      <script>scripts\getKey.gml</script>
+      <script>scripts\getReal.gml</script>
+      <script>scripts\ternary.gml</script>
     </scripts>
     <scripts name="Game">
       <script>scripts\init.gml</script>
@@ -115,6 +116,7 @@
     </objects>
     <objects name="GUI">
       <object>objects\o_command</object>
+      <object>objects\o_keyboard</object>
     </objects>
     <objects name="Menu">
       <objects name="Main">
@@ -123,14 +125,27 @@
         <object>objects\o_start</object>
       </objects>
       <objects name="Options">
-        <object>objects\o_maxfps</object>
-        <object>objects\o_left</object>
-        <object>objects\o_right</object>
-        <object>objects\o_jump</object>
+        <objects name="Keys">
+          <object>objects\o_down</object>
+          <object>objects\o_jump</object>
+          <object>objects\o_left</object>
+          <object>objects\o_right</object>
+        </objects>
+        <objects name="Toggles">
+          <object>objects\o_fps</object>
+          <object>objects\o_mute</object>
+        </objects>
+        <objects name="Text">
+          <object>objects\o_maxfps</object>
+        </objects>
+      </objects>
+      <objects name="Controls">
+        <object>objects\o_key</object>
+        <object>objects\o_textbox</object>
+        <object>objects\o_toggle</object>
       </objects>
       <object>objects\o_back</object>
       <object>objects\o_menu</object>
-      <object>objects\o_textbox</object>
     </objects>
     <objects name="Monsters">
       <object>objects\o_mongoose</object>
@@ -174,6 +189,9 @@
     <room>rooms\r_world5</room>
     <room>rooms\r_generator</room>
   </rooms>
+  <constants number="1">
+    <constant name="CONFIGFILE">"Config.ini"</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

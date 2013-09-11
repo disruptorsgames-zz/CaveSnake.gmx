@@ -70,7 +70,7 @@ if (global.FPS)
     else
         color = c_white;
     
-    drawText(8, 2, fps, color);
+    drawText(8, 2, string(fps), color);
 }
 </string>
           </argument>

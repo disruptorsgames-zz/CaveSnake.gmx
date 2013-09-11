@@ -246,8 +246,10 @@ else if (lives == 0)
             <string>/// Physics Debug
 if(debug_mode)
 {
-    flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
+    flag = phy_debug_render_coms | phy_debug_render_shapes;
     physics_world_draw_debug(flag);
+    /*flag = phy_debug_render_aabb | phy_debug_render_collision_pairs | phy_debug_render_obb;
+    physics_world_draw_debug(flag);*/
 }
 </string>
           </argument>
