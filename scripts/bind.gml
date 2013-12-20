@@ -47,4 +47,10 @@ switch (object_index)
         ini_write_real("settings", "mute", getReal(argument0));
         ini_close();
         break;
+    case o_music:
+        global.MUSIC = value;
+        ini_open(CONFIGFILE);
+        ini_write_real("settings", "music", getReal(argument0));
+        ini_close();
+        break;
 }

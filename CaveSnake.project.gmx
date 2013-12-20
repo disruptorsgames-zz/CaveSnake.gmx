@@ -22,7 +22,6 @@
     </sounds>
     <sounds name="Music">
       <sound>sound\sfx_music</sound>
-      <sound>sound\sfx_intro</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -33,7 +32,6 @@
     <sprites name="GUI">
       <sprite>sprites\s_sound</sprite>
       <sprite>sprites\s_heart</sprite>
-      <sprite>sprites\s_keyboard</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\s_mongoose</sprite>
@@ -112,7 +110,6 @@
     </objects>
     <objects name="GUI">
       <object>objects\o_command</object>
-      <object>objects\o_keyboard</object>
     </objects>
     <objects name="Menu">
       <objects name="Controls">
@@ -139,6 +136,7 @@
         <objects name="Toggles">
           <object>objects\o_stats</object>
           <object>objects\o_mute</object>
+          <object>objects\o_music</object>
         </objects>
       </objects>
       <object>objects\o_back</object>

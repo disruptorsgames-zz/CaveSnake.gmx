@@ -10,9 +10,7 @@
   <persistent>0</persistent>
   <colour>14267782</colour>
   <showcolour>-1</showcolour>
-  <code>setView();
-
-// create generator
+  <code>// create generator
 instance_create(0, (room_height - 16) / 2, o_generator);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>

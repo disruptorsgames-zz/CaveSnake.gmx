@@ -35,7 +35,7 @@ hit = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_ball">
+    <event eventtype="4" ename="o_box">
       <action>
         <libid>1</libid>
         <id>605</id>
@@ -57,7 +57,7 @@ hit = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_box">
+    <event eventtype="4" ename="o_ball">
       <action>
         <libid>1</libid>
         <id>605</id>

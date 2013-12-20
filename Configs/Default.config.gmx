@@ -43,6 +43,13 @@
     <option_android_licensing_key></option_android_licensing_key>
     <option_android_major_version>1</option_android_major_version>
     <option_android_minor_version>0</option_android_minor_version>
+    <option_android_mobage>0</option_android_mobage>
+    <option_android_mobage_appkey></option_android_mobage_appkey>
+    <option_android_mobage_extension_location></option_android_mobage_extension_location>
+    <option_android_mobage_key></option_android_mobage_key>
+    <option_android_mobage_sandbox>0</option_android_mobage_sandbox>
+    <option_android_mobage_secret></option_android_mobage_secret>
+    <option_android_mobage_version></option_android_mobage_version>
     <option_android_orient_landscape>true</option_android_orient_landscape>
     <option_android_orient_portrait>true</option_android_orient_portrait>
     <option_android_orientation>2</option_android_orientation>
@@ -96,7 +103,7 @@
     <option_html5_index>-1</option_html5_index>
     <option_html5_interpolate>0</option_html5_interpolate>
     <option_html5_jsprepend></option_html5_jsprepend>
-    <option_html5_loadingbar></option_html5_loadingbar>
+    <option_html5_loadingbar>-1</option_html5_loadingbar>
     <option_html5_outputdebugtoconsole>False</option_html5_outputdebugtoconsole>
     <option_html5_outputname>index.html</option_html5_outputname>
     <option_html5_scale>-1</option_html5_scale>
@@ -115,7 +122,7 @@
     <option_ios_advertising_key></option_ios_advertising_key>
     <option_ios_advertising_type>iAds</option_ios_advertising_type>
     <option_ios_app_id>com.disruptorsgames.cavesnake</option_ios_app_id>
-    <option_ios_build_version>25</option_ios_build_version>
+    <option_ios_build_version>37</option_ios_build_version>
     <option_ios_certificate>iPhone Developer: Derek Pierson (W9UXBGBTHX)</option_ios_certificate>
     <option_ios_device_type>1</option_ios_device_type>
     <option_ios_display_name>CaveSnake</option_ios_display_name>
@@ -124,9 +131,12 @@
     <option_ios_google_analytics_enable>0</option_ios_google_analytics_enable>
     <option_ios_google_tracking_id></option_ios_google_tracking_id>
     <option_ios_icon_114>Configs\Default\ios\icons\icon114.png</option_ios_icon_114>
+    <option_ios_icon_120>Configs\Default\ios\icons\icon120.png</option_ios_icon_120>
     <option_ios_icon_144>Configs\Default\ios\icons\icon144.png</option_ios_icon_144>
+    <option_ios_icon_152>Configs\Default\ios\icons\icon152.png</option_ios_icon_152>
     <option_ios_icon_57>Configs\Default\ios\icons\icon57.png</option_ios_icon_57>
     <option_ios_icon_72>Configs\Default\ios\icons\icon72.png</option_ios_icon_72>
+    <option_ios_icon_76>Configs\Default\ios\icons\icon76.png</option_ios_icon_76>
     <option_ios_inmobi_enable>0</option_ios_inmobi_enable>
     <option_ios_inmobi_id></option_ios_inmobi_id>
     <option_ios_inmobi_test_enable>0</option_ios_inmobi_test_enable>

@@ -1,6 +1,7 @@
 ini_open(CONFIGFILE);
 // settings
 global.MUTE = ini_read_real("settings", "mute", false);
+global.MUSIC = ini_read_real("settings", "music", true);
 global.STATS = ini_read_real("settings", "stats", true);
 global.MAXFPS = ini_read_real("settings", "maxfps", room_speed);
 // movement
@@ -14,4 +15,4 @@ ini_close();
 global.TYPING = -1;
 
 // audio
-playMusic(sfx_intro);
+playMusic(sfx_music);
