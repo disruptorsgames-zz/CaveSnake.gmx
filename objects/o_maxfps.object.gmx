@@ -30,6 +30,7 @@ title = "Max FPS:";
 text = string(global.MAXFPS);
 width = 48;
 color = make_color_rgb(181, 230, 29);
+hover = false;
 </string>
           </argument>
         </arguments>

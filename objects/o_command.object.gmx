@@ -32,9 +32,9 @@ else
     audio_resume_all();
 
 if (global.MUSIC)
-    audio_resume_music();
+    audio_resume_sound(sfx_music);
 else
-    audio_pause_music();
+    audio_pause_sound(sfx_music);
 </string>
           </argument>
         </arguments>

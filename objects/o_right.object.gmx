@@ -30,6 +30,7 @@ title = "Move Right:";
 text = global.RIGHT;
 width = 48;
 color = make_color_rgb(181, 230, 29);
+hover = false;
 </string>
           </argument>
         </arguments>
